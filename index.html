@@ -7,187 +7,430 @@
 
     <title>Lighted Tutoriales</title>
 
-    <link rel="icon" type="image/png" href="images/icono.png">
+    <link rel="icon" href="images/icono.png">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header class="navbar">
+<!-- =========================
+     BARRA SUPERIOR
+========================= -->
 
-    <a href="index.html" class="logo-link">
-        <img
-            src="images/logocompleto.png"
-            alt="Lighted Tutoriales"
-            class="logo"
+<header class="topbar">
+
+    <div class="top-left">
+
+        <button class="menu-button" aria-label="Menú">
+            ☰
+        </button>
+
+        <a href="index.html" class="brand">
+
+            <img
+                src="images/logocompleto.png"
+                alt="Lighted Tutoriales"
+            >
+
+        </a>
+
+    </div>
+
+
+    <!-- BUSCADOR -->
+
+    <div class="search">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Buscar tutoriales..."
+            autocomplete="off"
         >
-    </a>
+
+        <button onclick="searchTutorials()">
+            🔍
+        </button>
+
+    </div>
+
+
+    <div class="top-right">
+
+        <button class="icon-button">
+            +
+        </button>
+
+        <div class="profile">
+            L
+        </div>
+
+    </div>
 
 </header>
 
 
-<main>
 
-    <!-- PRESENTACIÓN -->
+<!-- =========================
+     ESTRUCTURA PRINCIPAL
+========================= -->
 
-    <section class="intro">
-
-        <div class="intro-content">
-
-            <span class="small-title">
-                LIGHTED TUTORIALES
-            </span>
-
-            <h1>
-                Tutoriales y recursos
-            </h1>
-
-            <p>
-                Encuentra aquí nuestros tutoriales, recursos
-                y materiales disponibles.
-            </p>
-
-        </div>
-
-    </section>
+<div class="layout">
 
 
-    <!-- LISTA DE TUTORIALES -->
+    <!-- =========================
+         SIDEBAR
+    ========================= -->
 
-    <section class="content">
+    <aside class="sidebar">
 
-        <div class="section-title">
+        <a href="#" class="side-item active">
+            <span>⌂</span>
+            Inicio
+        </a>
 
-            <span>
-                CONTENIDO
-            </span>
+        <a href="#tutoriales" class="side-item">
+            <span>▶</span>
+            Tutoriales
+        </a>
 
-            <h2>
-                Tutoriales
-            </h2>
+        <a href="#recursos" class="side-item">
+            <span>▣</span>
+            Recursos
+        </a>
 
-        </div>
+        <div class="sidebar-line"></div>
+
+        <p class="sidebar-title">
+            CATEGORÍAS
+        </p>
+
+        <a href="#" class="side-item">
+            <span>●</span>
+            Diseño
+        </a>
+
+        <a href="#" class="side-item">
+            <span>●</span>
+            Edición
+        </a>
+
+        <a href="#" class="side-item">
+            <span>●</span>
+            Software
+        </a>
+
+    </aside>
 
 
-        <div class="tutorial-list">
+
+    <!-- =========================
+         CONTENIDO
+    ========================= -->
+
+    <main class="main">
 
 
-            <!-- ======================================
-                 TUTORIAL 1
-            ======================================= -->
+        <!-- =========================
+             VIDEO DESTACADO
+        ========================= -->
+
+        <section class="featured">
 
             <a
                 href="tutoriales/duro-d3-m4ta4r.html"
-                class="tutorial"
+                class="video-preview"
             >
 
-                <div class="tutorial-icon">
+                <div class="video-background">
 
                     <img
                         src="images/icono.png"
                         alt=""
                     >
 
-                </div>
+                    <div class="play-button">
+                        ▶
+                    </div>
 
-
-                <div class="tutorial-info">
-
-                    <span class="category">
+                    <span class="duration">
                         TUTORIAL
                     </span>
 
-                    <h3>
-                        Dur0 d3 m4ta4r
-                    </h3>
+                </div>
 
-                    <p>
+            </a>
+
+
+            <div class="video-info">
+
+                <div class="channel-icon">
+
+                    <img
+                        src="images/icono.png"
+                        alt="Lighted"
+                    >
+
+                </div>
+
+
+                <div class="video-text">
+
+                    <h1>
+                        Dur0 d3 m4ta4r
+                    </h1>
+
+                    <p class="channel-name">
+                        Lighted Tutoriales
+                    </p>
+
+                    <p class="description">
                         Accede al contenido y recursos
                         correspondientes a este tutorial.
                     </p>
 
+                    <div class="video-meta">
+                        Tutorial · Recursos disponibles
+                    </div>
+
                 </div>
 
+            </div>
 
-                <div class="arrow">
-                    →
-                </div>
-
-            </a>
+        </section>
 
 
-            <!-- ======================================
-                 EJEMPLO PARA FUTUROS TUTORIALES
 
-                 Copia el bloque anterior y cambia:
+        <!-- =========================
+             RECURSOS
+        ========================= -->
 
-                 href
-                 título
-                 descripción
-            ======================================= -->
+        <section id="recursos" class="resources">
 
-            <!--
+            <div class="section-heading">
 
-            <a
-                href="tutoriales/nuevo-tutorial.html"
-                class="tutorial"
-            >
-
-                <div class="tutorial-icon">
-                    <img
-                        src="images/icono.png"
-                        alt=""
-                    >
-                </div>
-
-                <div class="tutorial-info">
-
-                    <span class="category">
-                        TUTORIAL
+                <div>
+                    <span>
+                        RECOMENDADOS
                     </span>
 
-                    <h3>
-                        Nuevo tutorial
-                    </h3>
-
-                    <p>
-                        Descripción del nuevo tutorial.
-                    </p>
-
+                    <h2>
+                        Más recursos
+                    </h2>
                 </div>
 
-                <div class="arrow">
-                    →
-                </div>
-
-            </a>
-
-            -->
+            </div>
 
 
-        </div>
-
-    </section>
-
-</main>
+            <div class="resource-grid">
 
 
-<footer>
+                <!-- RECURSO 1 -->
 
-    <div class="footer-content">
+                <a
+                    href="tutoriales/duro-d3-m4ta4r.html"
+                    class="resource-card"
+                >
 
-        <img
-            src="images/icono.png"
-            alt="Lighted"
-        >
+                    <div class="thumbnail">
 
-        <span>
-            © 2026 Lighted Tutoriales
-        </span>
+                        <img
+                            src="images/icono.png"
+                            alt=""
+                        >
 
-    </div>
+                        <span class="thumbnail-label">
+                            TUTORIAL
+                        </span>
 
-</footer>
+                    </div>
+
+
+                    <div class="resource-info">
+
+                        <div class="small-icon">
+
+                            <img
+                                src="images/icono.png"
+                                alt=""
+                            >
+
+                        </div>
+
+
+                        <div>
+
+                            <h3>
+                                Dur0 d3 m4ta4r
+                            </h3>
+
+                            <p>
+                                Lighted Tutoriales
+                            </p>
+
+                            <span class="resource-meta">
+                                Tutorial · Recursos
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+
+                <!-- ===================================
+                     FUTUROS RECURSOS
+
+                     Duplica el bloque anterior
+                     para agregar más links.
+                ==================================== -->
+
+
+                <a
+                    href="#"
+                    class="resource-card future"
+                >
+
+                    <div class="thumbnail">
+
+                        <div class="coming">
+                            PRÓXIMAMENTE
+                        </div>
+
+                    </div>
+
+
+                    <div class="resource-info">
+
+                        <div class="small-icon">
+                            +
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Nuevo recurso
+                            </h3>
+
+                            <p>
+                                Lighted Tutoriales
+                            </p>
+
+                            <span class="resource-meta">
+                                Próximamente
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="resource-card future"
+                >
+
+                    <div class="thumbnail">
+
+                        <div class="coming">
+                            PRÓXIMAMENTE
+                        </div>
+
+                    </div>
+
+
+                    <div class="resource-info">
+
+                        <div class="small-icon">
+                            +
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                Nuevo recurso
+                            </h3>
+
+                            <p>
+                                Lighted Tutoriales
+                            </p>
+
+                            <span class="resource-meta">
+                                Próximamente
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+function searchTutorials() {
+
+    const input =
+        document.getElementById("searchInput");
+
+    const search =
+        input.value.toLowerCase().trim();
+
+    const cards =
+        document.querySelectorAll(".resource-card");
+
+    cards.forEach(card => {
+
+        const text =
+            card.innerText.toLowerCase();
+
+        if (
+            search === "" ||
+            text.includes(search)
+        ) {
+
+            card.style.display = "";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+}
+
+document
+    .getElementById("searchInput")
+    .addEventListener("keyup", function(event) {
+
+        if (event.key === "Enter") {
+            searchTutorials();
+        }
+
+    });
+
+</script>
 
 
 </body>
