@@ -1,438 +1,431 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Lighted Tutoriales</title>
-
     <link rel="icon" href="images/icono.png">
-    <link rel="stylesheet" href="style.css">
-</head>
+    <style>
+        /* ===== Variables ===== */
+        :root {
+            --bg: #0f0f0f;
+            --surface: #1a1a1a;
+            --surface-2: #272727;
+            --hover: #2d2d2d;
+            --text: #f1f1f1;
+            --muted: #aaaaaa;
+            --border: #303030;
+            --accent: #ff4e45;
+            --topbar-h: 56px;
+            --sidebar-w: 240px;
+        }
 
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: calc(var(--topbar-h) + 16px); }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: "Roboto", "Segoe UI", Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+        img { display: block; max-width: 100%; }
+
+        :focus-visible { outline: 2px solid #3ea6ff; outline-offset: 2px; }
+
+        /* ===== Barra superior ===== */
+        .topbar {
+            position: fixed; top: 0; left: 0; right: 0;
+            height: var(--topbar-h);
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 16px; padding: 0 16px;
+            background: var(--bg);
+            z-index: 100;
+        }
+
+        .top-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+
+        .menu-button, .icon-button {
+            width: 40px; height: 40px; border-radius: 50%;
+            display: grid; place-items: center;
+            font-size: 20px;
+        }
+        .menu-button:hover, .icon-button:hover { background: var(--hover); }
+
+        .brand img { height: 28px; width: auto; max-width: 160px; object-fit: contain; }
+
+        .search {
+            flex: 0 1 640px;
+            display: flex; height: 40px;
+        }
+        .search input {
+            flex: 1; min-width: 0;
+            background: #121212; color: var(--text);
+            border: 1px solid var(--border);
+            border-right: 0;
+            border-radius: 20px 0 0 20px;
+            padding: 0 16px; font-size: 16px;
+        }
+        .search input:focus { outline: none; border-color: #1c62b9; }
+        .search button {
+            width: 64px;
+            background: var(--surface-2);
+            border: 1px solid var(--border);
+            border-radius: 0 20px 20px 0;
+        }
+        .search button:hover { background: var(--hover); }
+
+        .top-right { display: flex; align-items: center; gap: 8px; }
+
+        .profile {
+            width: 32px; height: 32px; border-radius: 50%;
+            display: grid; place-items: center;
+            background: #8e44ad; font-weight: 500;
+        }
+
+        /* ===== Estructura ===== */
+        .layout { padding-top: var(--topbar-h); }
+
+        .sidebar {
+            position: fixed; top: var(--topbar-h); left: 0; bottom: 0;
+            width: var(--sidebar-w);
+            padding: 12px;
+            overflow-y: auto;
+            background: var(--bg);
+            z-index: 90;
+            transition: transform .2s;
+        }
+
+        .side-item {
+            display: flex; align-items: center; gap: 24px;
+            height: 40px; padding: 0 12px;
+            border-radius: 10px;
+        }
+        .side-item span { width: 24px; text-align: center; font-size: 16px; }
+        .side-item:hover { background: var(--hover); }
+        .side-item.active { background: var(--surface-2); font-weight: 500; }
+
+        .sidebar-line { height: 1px; background: var(--border); margin: 12px 0; }
+
+        .sidebar-title {
+            padding: 6px 12px 8px;
+            font-size: 16px; font-weight: 500;
+        }
+
+        .main {
+            margin-left: var(--sidebar-w);
+            padding: 24px;
+            transition: margin-left .2s;
+        }
+
+        body.sidebar-hidden .sidebar { transform: translateX(-100%); }
+        body.sidebar-hidden .main { margin-left: 0; }
+
+        /* ===== Video destacado ===== */
+        .featured { max-width: 1100px; margin: 0 auto 40px; }
+
+        .video-preview { display: block; }
+
+        .video-background {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            max-height: 560px;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            display: grid; place-items: center;
+            background: radial-gradient(circle at 50% 40%, #2a2a2a 0%, #0b0b0b 80%);
+        }
+
+        .video-background > img {
+            width: auto; height: 45%; max-width: 45%;
+            object-fit: contain;
+            filter: drop-shadow(0 8px 24px rgba(0,0,0,.6));
+        }
+
+        .play-button {
+            position: absolute; right: 20px; bottom: 20px;
+            width: 56px; height: 56px; border-radius: 50%;
+            display: grid; place-items: center;
+            background: rgba(0,0,0,.7);
+            font-size: 22px; padding-left: 3px;
+            transition: background .15s, transform .15s;
+        }
+        .video-preview:hover .play-button { background: var(--accent); transform: scale(1.08); }
+
+        .duration {
+            position: absolute; right: 12px; top: 12px;
+            background: rgba(0,0,0,.8);
+            padding: 3px 8px; border-radius: 4px;
+            font-size: 12px; font-weight: 500;
+        }
+
+        .video-info { display: flex; gap: 12px; margin-top: 16px; }
+
+        .channel-icon {
+            flex: none; width: 40px; height: 40px;
+            border-radius: 50%; overflow: hidden;
+            background: var(--surface-2);
+        }
+        .channel-icon img { width: 100%; height: 100%; object-fit: cover; }
+
+        .video-text h1 { font-size: 20px; font-weight: 600; line-height: 1.3; }
+        .channel-name { color: var(--muted); margin-top: 4px; }
+        .description {
+            margin-top: 12px; padding: 12px;
+            background: var(--surface); border-radius: 12px;
+            max-width: 700px;
+        }
+        .video-meta { color: var(--muted); font-size: 13px; margin-top: 8px; }
+
+        /* ===== Recursos ===== */
+        .resources { max-width: 1400px; margin: 0 auto; }
+
+        .section-heading {
+            display: flex; align-items: baseline; gap: 12px;
+            margin-bottom: 16px; padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .section-heading span { color: var(--muted); font-size: 13px; order: 2; }
+        .section-heading h2 { font-size: 20px; font-weight: 600; }
+        .section-heading > div { display: flex; flex-direction: row-reverse; gap: 12px; align-items: baseline; justify-content: flex-end; }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px 16px;
+        }
+
+        .resource-card { display: block; border-radius: 12px; }
+
+        .thumbnail {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            border-radius: 12px; overflow: hidden;
+            display: grid; place-items: center;
+            background: radial-gradient(circle at 50% 40%, #2a2a2a 0%, #0b0b0b 80%);
+            transition: border-radius .15s;
+        }
+        .resource-card:hover .thumbnail { border-radius: 0; }
+
+        .thumbnail img {
+            width: auto; height: 50%; max-width: 50%;
+            object-fit: contain;
+        }
+
+        .thumbnail-label {
+            position: absolute; right: 8px; bottom: 8px;
+            background: rgba(0,0,0,.8);
+            padding: 2px 6px; border-radius: 4px;
+            font-size: 12px; font-weight: 500;
+        }
+
+        .resource-info { display: flex; gap: 12px; margin-top: 12px; }
+
+        .small-icon {
+            flex: none; width: 36px; height: 36px;
+            border-radius: 50%; overflow: hidden;
+            background: var(--surface-2);
+            display: grid; place-items: center;
+            color: var(--muted); font-size: 18px;
+        }
+        .small-icon img { width: 100%; height: 100%; object-fit: cover; }
+
+        .resource-info h3 {
+            font-size: 16px; font-weight: 500; line-height: 1.3;
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .resource-info p, .resource-meta { color: var(--muted); font-size: 13px; }
+        .resource-info p { margin-top: 4px; }
+
+        /* Tarjetas "próximamente" */
+        .resource-card.future { opacity: .55; pointer-events: none; }
+        .coming {
+            font-size: 13px; font-weight: 500; color: var(--muted);
+            border: 1px dashed #555; border-radius: 6px; padding: 6px 12px;
+        }
+
+        .no-results { display: none; color: var(--muted); padding: 32px 0; text-align: center; }
+
+        /* ===== Móvil / tablet ===== */
+        @media (max-width: 900px) {
+            .sidebar { transform: translateX(-100%); box-shadow: 4px 0 24px rgba(0,0,0,.5); }
+            body.sidebar-open .sidebar { transform: none; }
+            .main { margin-left: 0 !important; padding: 12px; }
+            .featured { margin-bottom: 28px; }
+            .video-background { border-radius: 0; margin: 0 -12px; width: calc(100% + 24px); }
+            .video-text h1 { font-size: 18px; }
+        }
+
+        @media (max-width: 600px) {
+            .brand img { height: 22px; }
+            .search button { width: 48px; }
+            .top-right .icon-button { display: none; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; scroll-behavior: auto !important; }
+        }
+    </style>
+</head>
 <body>
 
-<!-- =========================
-     BARRA SUPERIOR
-========================= -->
-
+<!-- BARRA SUPERIOR -->
 <header class="topbar">
-
     <div class="top-left">
-
-        <button class="menu-button" aria-label="Menú">
-            ☰
-        </button>
-
+        <button class="menu-button" id="menuButton" aria-label="Menú">☰</button>
         <a href="index.html" class="brand">
-
-            <img
-                src="images/logocompleto.png"
-                alt="Lighted Tutoriales"
-            >
-
+            <img src="images/logocompleto.png" alt="Lighted Tutoriales">
         </a>
-
     </div>
-
-
-    <!-- BUSCADOR -->
 
     <div class="search">
-
-        <input
-            type="text"
-            id="searchInput"
-            placeholder="Buscar tutoriales..."
-            autocomplete="off"
-        >
-
-        <button onclick="searchTutorials()">
-            🔍
-        </button>
-
+        <input type="text" id="searchInput" placeholder="Buscar tutoriales" autocomplete="off" aria-label="Buscar tutoriales">
+        <button id="searchButton" aria-label="Buscar">🔍</button>
     </div>
-
 
     <div class="top-right">
-
-        <button class="icon-button">
-            +
-        </button>
-
-        <div class="profile">
-            L
-        </div>
-
+        <button class="icon-button" aria-label="Crear">+</button>
+        <div class="profile">L</div>
     </div>
-
 </header>
-
-
-
-<!-- =========================
-     ESTRUCTURA PRINCIPAL
-========================= -->
 
 <div class="layout">
 
-
-    <!-- =========================
-         SIDEBAR
-    ========================= -->
-
-    <aside class="sidebar">
-
-        <a href="#" class="side-item active">
-            <span>⌂</span>
-            Inicio
-        </a>
-
-        <a href="#tutoriales" class="side-item">
-            <span>▶</span>
-            Tutoriales
-        </a>
-
-        <a href="#recursos" class="side-item">
-            <span>▣</span>
-            Recursos
-        </a>
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <a href="#" class="side-item active"><span>⌂</span>Inicio</a>
+        <a href="#tutoriales" class="side-item"><span>▶</span>Tutoriales</a>
+        <a href="#recursos" class="side-item"><span>▣</span>Recursos</a>
 
         <div class="sidebar-line"></div>
+        <p class="sidebar-title">Categorías</p>
 
-        <p class="sidebar-title">
-            CATEGORÍAS
-        </p>
-
-        <a href="#" class="side-item">
-            <span>●</span>
-            Diseño
-        </a>
-
-        <a href="#" class="side-item">
-            <span>●</span>
-            Edición
-        </a>
-
-        <a href="#" class="side-item">
-            <span>●</span>
-            Software
-        </a>
-
+        <a href="#" class="side-item"><span>●</span>Diseño</a>
+        <a href="#" class="side-item"><span>●</span>Edición</a>
+        <a href="#" class="side-item"><span>●</span>Software</a>
     </aside>
-
-
-
-    <!-- =========================
-         CONTENIDO
-    ========================= -->
 
     <main class="main">
 
-
-        <!-- =========================
-             VIDEO DESTACADO
-        ========================= -->
-
-        <section class="featured">
-
-            <a
-                href="tutoriales/duro-d3-m4ta4r.html"
-                class="video-preview"
-            >
-
+        <!-- VIDEO DESTACADO -->
+        <section class="featured" id="tutoriales">
+            <a href="tutoriales/duro-d3-m4ta4r.html" class="video-preview">
                 <div class="video-background">
-
-                    <img
-                        src="images/icono.png"
-                        alt=""
-                    >
-
-                    <div class="play-button">
-                        ▶
-                    </div>
-
-                    <span class="duration">
-                        TUTORIAL
-                    </span>
-
+                    <img src="images/icono.png" alt="">
+                    <span class="duration">Tutorial</span>
+                    <div class="play-button">▶</div>
                 </div>
-
             </a>
 
-
             <div class="video-info">
-
-                <div class="channel-icon">
-
-                    <img
-                        src="images/icono.png"
-                        alt="Lighted"
-                    >
-
-                </div>
-
-
+                <div class="channel-icon"><img src="images/icono.png" alt="Lighted"></div>
                 <div class="video-text">
-
-                    <h1>
-                        Dur0 d3 m4ta4r
-                    </h1>
-
-                    <p class="channel-name">
-                        Lighted Tutoriales
-                    </p>
-
-                    <p class="description">
-                        Accede al contenido y recursos
-                        correspondientes a este tutorial.
-                    </p>
-
-                    <div class="video-meta">
-                        Tutorial · Recursos disponibles
-                    </div>
-
+                    <h1>Dur0 d3 m4ta4r</h1>
+                    <p class="channel-name">Lighted Tutoriales</p>
+                    <p class="description">Accede al contenido y recursos correspondientes a este tutorial.</p>
+                    <div class="video-meta">Tutorial · Recursos disponibles</div>
                 </div>
-
             </div>
-
         </section>
 
-
-
-        <!-- =========================
-             RECURSOS
-        ========================= -->
-
+        <!-- RECURSOS -->
         <section id="recursos" class="resources">
-
             <div class="section-heading">
-
                 <div>
-                    <span>
-                        RECOMENDADOS
-                    </span>
-
-                    <h2>
-                        Más recursos
-                    </h2>
+                    <h2>Más recursos</h2>
+                    <span>Recomendados</span>
                 </div>
-
             </div>
 
-
-            <div class="resource-grid">
-
+            <div class="resource-grid" id="resourceGrid">
 
                 <!-- RECURSO 1 -->
-
-                <a
-                    href="tutoriales/duro-d3-m4ta4r.html"
-                    class="resource-card"
-                >
-
+                <a href="tutoriales/duro-d3-m4ta4r.html" class="resource-card">
                     <div class="thumbnail">
-
-                        <img
-                            src="images/icono.png"
-                            alt=""
-                        >
-
-                        <span class="thumbnail-label">
-                            TUTORIAL
-                        </span>
-
+                        <img src="images/icono.png" alt="">
+                        <span class="thumbnail-label">Tutorial</span>
                     </div>
-
-
                     <div class="resource-info">
-
-                        <div class="small-icon">
-
-                            <img
-                                src="images/icono.png"
-                                alt=""
-                            >
-
-                        </div>
-
-
+                        <div class="small-icon"><img src="images/icono.png" alt=""></div>
                         <div>
-
-                            <h3>
-                                Dur0 d3 m4ta4r
-                            </h3>
-
-                            <p>
-                                Lighted Tutoriales
-                            </p>
-
-                            <span class="resource-meta">
-                                Tutorial · Recursos
-                            </span>
-
+                            <h3>Dur0 d3 m4ta4r</h3>
+                            <p>Lighted Tutoriales</p>
+                            <span class="resource-meta">Tutorial · Recursos</span>
                         </div>
-
                     </div>
-
                 </a>
 
-
-
-                <!-- ===================================
-                     FUTUROS RECURSOS
-
-                     Duplica el bloque anterior
-                     para agregar más links.
-                ==================================== -->
-
-
-                <a
-                    href="#"
-                    class="resource-card future"
-                >
-
-                    <div class="thumbnail">
-
-                        <div class="coming">
-                            PRÓXIMAMENTE
-                        </div>
-
-                    </div>
-
-
+                <!-- PRÓXIMAMENTE -->
+                <a href="#" class="resource-card future" aria-disabled="true">
+                    <div class="thumbnail"><div class="coming">Próximamente</div></div>
                     <div class="resource-info">
-
-                        <div class="small-icon">
-                            +
-                        </div>
-
+                        <div class="small-icon">+</div>
                         <div>
-
-                            <h3>
-                                Nuevo recurso
-                            </h3>
-
-                            <p>
-                                Lighted Tutoriales
-                            </p>
-
-                            <span class="resource-meta">
-                                Próximamente
-                            </span>
-
+                            <h3>Nuevo recurso</h3>
+                            <p>Lighted Tutoriales</p>
+                            <span class="resource-meta">Próximamente</span>
                         </div>
-
                     </div>
-
                 </a>
 
-
-                <a
-                    href="#"
-                    class="resource-card future"
-                >
-
-                    <div class="thumbnail">
-
-                        <div class="coming">
-                            PRÓXIMAMENTE
-                        </div>
-
-                    </div>
-
-
+                <a href="#" class="resource-card future" aria-disabled="true">
+                    <div class="thumbnail"><div class="coming">Próximamente</div></div>
                     <div class="resource-info">
-
-                        <div class="small-icon">
-                            +
-                        </div>
-
+                        <div class="small-icon">+</div>
                         <div>
-
-                            <h3>
-                                Nuevo recurso
-                            </h3>
-
-                            <p>
-                                Lighted Tutoriales
-                            </p>
-
-                            <span class="resource-meta">
-                                Próximamente
-                            </span>
-
+                            <h3>Nuevo recurso</h3>
+                            <p>Lighted Tutoriales</p>
+                            <span class="resource-meta">Próximamente</span>
                         </div>
-
                     </div>
-
                 </a>
-
 
             </div>
 
+            <p class="no-results" id="noResults">No hay tutoriales que coincidan con tu búsqueda.</p>
         </section>
 
-
     </main>
-
 </div>
 
-
-
-<!-- =========================
-     JAVASCRIPT
-========================= -->
-
 <script>
-
 function searchTutorials() {
-
-    const input =
-        document.getElementById("searchInput");
-
-    const search =
-        input.value.toLowerCase().trim();
-
-    const cards =
-        document.querySelectorAll(".resource-card");
+    const search = document.getElementById("searchInput").value.toLowerCase().trim();
+    const cards = document.querySelectorAll(".resource-card");
+    let visible = 0;
 
     cards.forEach(card => {
-
-        const text =
-            card.innerText.toLowerCase();
-
-        if (
-            search === "" ||
-            text.includes(search)
-        ) {
-
-            card.style.display = "";
-
-        } else {
-
-            card.style.display = "none";
-
-        }
-
+        const match = search === "" || card.innerText.toLowerCase().includes(search);
+        card.style.display = match ? "" : "none";
+        if (match) visible++;
     });
 
+    document.getElementById("noResults").style.display = visible ? "none" : "block";
 }
 
-document
-    .getElementById("searchInput")
-    .addEventListener("keyup", function(event) {
+document.getElementById("searchButton").addEventListener("click", searchTutorials);
+document.getElementById("searchInput").addEventListener("input", searchTutorials);
 
-        if (event.key === "Enter") {
-            searchTutorials();
-        }
+// Menú lateral: se oculta en escritorio y se abre como panel en móvil
+document.getElementById("menuButton").addEventListener("click", () => {
+    if (window.matchMedia("(max-width: 900px)").matches) {
+        document.body.classList.toggle("sidebar-open");
+    } else {
+        document.body.classList.toggle("sidebar-hidden");
+    }
+});
 
-    });
-
+document.querySelectorAll(".sidebar a").forEach(a =>
+    a.addEventListener("click", () => document.body.classList.remove("sidebar-open"))
+);
 </script>
-
 
 </body>
 </html>
-```
