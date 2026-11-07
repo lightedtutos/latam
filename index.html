@@ -7,181 +7,188 @@
 
     <title>Lighted Tutoriales</title>
 
-    <meta
-        name="description"
-        content="Lighted Tutoriales - Recursos, tutoriales y contenido."
-    >
-
     <link rel="icon" type="image/png" href="images/icono.png">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <header class="header">
-        <div class="header-container">
+<header class="navbar">
 
-            <a href="index.html" class="brand">
-                <img
-                    src="images/logocompleto.png"
-                    alt="Lighted Tutoriales"
-                >
-            </a>
+    <a href="index.html" class="logo-link">
+        <img
+            src="images/logocompleto.png"
+            alt="Lighted Tutoriales"
+            class="logo"
+        >
+    </a>
 
-        </div>
-    </header>
-
-
-    <main>
-
-        <!-- HERO -->
-        <section class="hero">
-
-            <div class="hero-content">
-
-                <span class="eyebrow">
-                    LIGHTED TUTORIALES
-                </span>
-
-                <h1>
-                    Recursos y tutoriales
-                </h1>
-
-                <p>
-                    Encuentra aquí todos nuestros tutoriales,
-                    recursos y materiales disponibles.
-                </p>
-
-            </div>
-
-        </section>
+</header>
 
 
-        <!-- TUTORIALES -->
-        <section class="tutorials">
+<main>
 
-            <div class="section-header">
+    <!-- PRESENTACIÓN -->
 
-                <div>
-                    <span class="section-label">
-                        CONTENIDO
-                    </span>
+    <section class="intro">
 
-                    <h2>
-                        Tutoriales disponibles
-                    </h2>
-                </div>
+        <div class="intro-content">
 
-            </div>
-
-
-            <div class="tutorial-grid">
-
-
-                <!-- TUTORIAL 1 -->
-                <a
-                    href="tutoriales/duro-d3-m4ta4r.html"
-                    class="tutorial-card"
-                >
-
-                    <div class="card-image">
-                        <img
-                            src="images/icono.png"
-                            alt="Dur0 d3 m4ta4r"
-                        >
-                    </div>
-
-                    <div class="card-content">
-
-                        <span class="card-category">
-                            TUTORIAL
-                        </span>
-
-                        <h3>
-                            Dur0 d3 m4ta4r
-                        </h3>
-
-                        <p>
-                            Accede al contenido y recursos
-                            correspondientes a este tutorial.
-                        </p>
-
-                        <div class="card-link">
-                            Abrir tutorial
-                            <span>→</span>
-                        </div>
-
-                    </div>
-
-                </a>
-
-
-                <!--
-                ==================================================
-                PARA AGREGAR OTRO TUTORIAL:
-
-                Copia desde <a class="tutorial-card"> hasta </a>
-                y cambia los datos.
-
-                Ejemplo:
-
-                <a href="tutoriales/mi-nuevo-tutorial.html"
-                   class="tutorial-card">
-
-                    <div class="card-image">
-                        <img src="images/icono.png"
-                             alt="Mi nuevo tutorial">
-                    </div>
-
-                    <div class="card-content">
-
-                        <span class="card-category">
-                            TUTORIAL
-                        </span>
-
-                        <h3>
-                            Mi nuevo tutorial
-                        </h3>
-
-                        <p>
-                            Descripción de mi tutorial.
-                        </p>
-
-                        <div class="card-link">
-                            Abrir tutorial
-                            <span>→</span>
-                        </div>
-
-                    </div>
-
-                </a>
-
-                ==================================================
-                -->
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <footer class="footer">
-
-        <div class="footer-container">
-
-            <img
-                src="images/icono.png"
-                alt="Lighted"
-            >
-
-            <span>
-                © 2026 Lighted Tutoriales
+            <span class="small-title">
+                LIGHTED TUTORIALES
             </span>
 
+            <h1>
+                Tutoriales y recursos
+            </h1>
+
+            <p>
+                Encuentra aquí nuestros tutoriales, recursos
+                y materiales disponibles.
+            </p>
+
         </div>
 
-    </footer>
+    </section>
+
+
+    <!-- LISTA DE TUTORIALES -->
+
+    <section class="content">
+
+        <div class="section-title">
+
+            <span>
+                CONTENIDO
+            </span>
+
+            <h2>
+                Tutoriales
+            </h2>
+
+        </div>
+
+
+        <div class="tutorial-list">
+
+
+            <!-- ======================================
+                 TUTORIAL 1
+            ======================================= -->
+
+            <a
+                href="tutoriales/duro-d3-m4ta4r.html"
+                class="tutorial"
+            >
+
+                <div class="tutorial-icon">
+
+                    <img
+                        src="images/icono.png"
+                        alt=""
+                    >
+
+                </div>
+
+
+                <div class="tutorial-info">
+
+                    <span class="category">
+                        TUTORIAL
+                    </span>
+
+                    <h3>
+                        Dur0 d3 m4ta4r
+                    </h3>
+
+                    <p>
+                        Accede al contenido y recursos
+                        correspondientes a este tutorial.
+                    </p>
+
+                </div>
+
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </a>
+
+
+            <!-- ======================================
+                 EJEMPLO PARA FUTUROS TUTORIALES
+
+                 Copia el bloque anterior y cambia:
+
+                 href
+                 título
+                 descripción
+            ======================================= -->
+
+            <!--
+
+            <a
+                href="tutoriales/nuevo-tutorial.html"
+                class="tutorial"
+            >
+
+                <div class="tutorial-icon">
+                    <img
+                        src="images/icono.png"
+                        alt=""
+                    >
+                </div>
+
+                <div class="tutorial-info">
+
+                    <span class="category">
+                        TUTORIAL
+                    </span>
+
+                    <h3>
+                        Nuevo tutorial
+                    </h3>
+
+                    <p>
+                        Descripción del nuevo tutorial.
+                    </p>
+
+                </div>
+
+                <div class="arrow">
+                    →
+                </div>
+
+            </a>
+
+            -->
+
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="footer-content">
+
+        <img
+            src="images/icono.png"
+            alt="Lighted"
+        >
+
+        <span>
+            © 2026 Lighted Tutoriales
+        </span>
+
+    </div>
+
+</footer>
+
 
 </body>
 </html>
