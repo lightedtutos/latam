@@ -5,280 +5,183 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Dur0 d3 m4ta4r | Lighted Tutoriales</title>
+    <title>Lighted Tutoriales</title>
 
-    <meta name="description" content="Dur0 d3 m4ta4r - Lighted Tutoriales">
+    <meta
+        name="description"
+        content="Lighted Tutoriales - Recursos, tutoriales y contenido."
+    >
 
     <link rel="icon" type="image/png" href="images/icono.png">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            min-height: 100vh;
-            font-family: Arial, Helvetica, sans-serif;
-            background:
-                radial-gradient(circle at top, #202020 0%, #0d0d0d 45%, #050505 100%);
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 30px 15px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 620px;
-            text-align: center;
-        }
-
-        .logo {
-            width: min(280px, 75%);
-            max-height: 120px;
-            object-fit: contain;
-            margin-bottom: 35px;
-            filter: drop-shadow(0 8px 25px rgba(0, 0, 0, 0.4));
-        }
-
-        .card {
-            background: rgba(20, 20, 20, 0.88);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 22px;
-            padding: 40px 32px;
-            box-shadow:
-                0 25px 80px rgba(0, 0, 0, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.04);
-            backdrop-filter: blur(12px);
-        }
-
-        .tag {
-            display: inline-block;
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #999;
-            margin-bottom: 14px;
-        }
-
-        h1 {
-            font-size: clamp(30px, 7vw, 48px);
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 12px;
-        }
-
-        .description {
-            color: #a8a8a8;
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        .download-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            min-height: 58px;
-            border-radius: 12px;
-            background: #ffffff;
-            color: #111111;
-            text-decoration: none;
-            font-size: 16px;
-            font-weight: 800;
-            transition: all 0.2s ease;
-            margin-bottom: 28px;
-        }
-
-        .download-button:hover {
-            transform: translateY(-2px);
-            background: #eeeeee;
-            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.12);
-        }
-
-        .password-section {
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding-top: 26px;
-        }
-
-        .password-label {
-            display: block;
-            color: #888;
-            font-size: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 10px;
-        }
-
-        .password-box {
-            display: flex;
-            gap: 10px;
-            background: #0b0b0b;
-            border: 1px solid #292929;
-            border-radius: 12px;
-            padding: 7px;
-        }
-
-        .password {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 44px;
-            font-family: monospace;
-            font-size: 15px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            color: #ffffff;
-            overflow: hidden;
-        }
-
-        .copy-button {
-            border: none;
-            border-radius: 9px;
-            padding: 0 18px;
-            background: #292929;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .copy-button:hover {
-            background: #3a3a3a;
-        }
-
-        .copy-button.copied {
-            background: #ffffff;
-            color: #111111;
-        }
-
-        .footer {
-            margin-top: 25px;
-            color: #555;
-            font-size: 12px;
-        }
-
-        @media (max-width: 500px) {
-            .card {
-                padding: 32px 20px;
-            }
-
-            .password-box {
-                flex-direction: column;
-            }
-
-            .copy-button {
-                min-height: 45px;
-            }
-
-            .logo {
-                margin-bottom: 25px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <main class="container">
+    <header class="header">
+        <div class="header-container">
 
-        <!-- Logo de la marca -->
-        <img
-            src="images/logocompleto.png"
-            alt="Lighted Tutoriales"
-            class="logo"
-        >
-
-        <section class="card">
-
-            <span class="tag">Tutorial</span>
-
-            <h1>Dur0 d3 m4ta4r</h1>
-
-            <p class="description">
-                Accede al contenido mediante el siguiente enlace.
-            </p>
-
-            <!-- Enlace -->
-            <a
-                href="https://stly.link/Lighted"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="download-button"
-            >
-                ABRIR ENLACE
+            <a href="index.html" class="brand">
+                <img
+                    src="images/logocompleto.png"
+                    alt="Lighted Tutoriales"
+                >
             </a>
 
-            <!-- Contraseña -->
-            <div class="password-section">
+        </div>
+    </header>
 
-                <span class="password-label">
-                    Contraseña del RAR
+
+    <main>
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    LIGHTED TUTORIALES
                 </span>
 
-                <div class="password-box">
+                <h1>
+                    Recursos y tutoriales
+                </h1>
 
-                    <div class="password" id="password">
-                        LIGHTEDTUTORIALES
-                    </div>
-
-                    <button
-                        class="copy-button"
-                        id="copyButton"
-                        onclick="copyPassword()"
-                    >
-                        COPIAR
-                    </button>
-
-                </div>
+                <p>
+                    Encuentra aquí todos nuestros tutoriales,
+                    recursos y materiales disponibles.
+                </p>
 
             </div>
 
         </section>
 
-        <div class="footer">
-            © Lighted Tutoriales
-        </div>
+
+        <!-- TUTORIALES -->
+        <section class="tutorials">
+
+            <div class="section-header">
+
+                <div>
+                    <span class="section-label">
+                        CONTENIDO
+                    </span>
+
+                    <h2>
+                        Tutoriales disponibles
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <div class="tutorial-grid">
+
+
+                <!-- TUTORIAL 1 -->
+                <a
+                    href="tutoriales/duro-d3-m4ta4r.html"
+                    class="tutorial-card"
+                >
+
+                    <div class="card-image">
+                        <img
+                            src="images/icono.png"
+                            alt="Dur0 d3 m4ta4r"
+                        >
+                    </div>
+
+                    <div class="card-content">
+
+                        <span class="card-category">
+                            TUTORIAL
+                        </span>
+
+                        <h3>
+                            Dur0 d3 m4ta4r
+                        </h3>
+
+                        <p>
+                            Accede al contenido y recursos
+                            correspondientes a este tutorial.
+                        </p>
+
+                        <div class="card-link">
+                            Abrir tutorial
+                            <span>→</span>
+                        </div>
+
+                    </div>
+
+                </a>
+
+
+                <!--
+                ==================================================
+                PARA AGREGAR OTRO TUTORIAL:
+
+                Copia desde <a class="tutorial-card"> hasta </a>
+                y cambia los datos.
+
+                Ejemplo:
+
+                <a href="tutoriales/mi-nuevo-tutorial.html"
+                   class="tutorial-card">
+
+                    <div class="card-image">
+                        <img src="images/icono.png"
+                             alt="Mi nuevo tutorial">
+                    </div>
+
+                    <div class="card-content">
+
+                        <span class="card-category">
+                            TUTORIAL
+                        </span>
+
+                        <h3>
+                            Mi nuevo tutorial
+                        </h3>
+
+                        <p>
+                            Descripción de mi tutorial.
+                        </p>
+
+                        <div class="card-link">
+                            Abrir tutorial
+                            <span>→</span>
+                        </div>
+
+                    </div>
+
+                </a>
+
+                ==================================================
+                -->
+
+            </div>
+
+        </section>
 
     </main>
 
-    <script>
-        function copyPassword() {
-            const password = "LIGHTEDTUTORIALES";
-            const button = document.getElementById("copyButton");
 
-            navigator.clipboard.writeText(password).then(() => {
-                button.textContent = "COPIADO ✓";
-                button.classList.add("copied");
+    <footer class="footer">
 
-                setTimeout(() => {
-                    button.textContent = "COPIAR";
-                    button.classList.remove("copied");
-                }, 2000);
-            }).catch(() => {
-                // Compatibilidad con navegadores antiguos
-                const textarea = document.createElement("textarea");
-                textarea.value = password;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand("copy");
-                textarea.remove();
+        <div class="footer-container">
 
-                button.textContent = "COPIADO ✓";
-                button.classList.add("copied");
+            <img
+                src="images/icono.png"
+                alt="Lighted"
+            >
 
-                setTimeout(() => {
-                    button.textContent = "COPIAR";
-                    button.classList.remove("copied");
-                }, 2000);
-            });
-        }
-    </script>
+            <span>
+                © 2026 Lighted Tutoriales
+            </span>
+
+        </div>
+
+    </footer>
 
 </body>
 </html>
